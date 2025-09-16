@@ -27,12 +27,26 @@ class ControllerAffichage extends Controller
         $totalpoids = Performance::whereIn('workout_id', $sessionIds)->sum('poids');
         ////
         ////
-        $end = Carbon::now();
+        $end = Carbon::now()->endOfDay();;
         $start = Carbon::now()->subYear()->startOfWeek(Carbon::MONDAY);
         $totaljourdelannee = CarbonPeriod::create($start, '1day',$end);
         $totalsceancedelannee = workout_session::where('user_id', $user->id)
             ->whereBetween('dateofworkout', [$start, $end])
             ->pluck('dateofworkout');
+        $jourdelanneesemaine = [];
+
+        for($i = 0; $i<ceil($totaljourdelannee->count()/7); $i++){
+            $semaine = [];
+            for ($j = 0; $j<7 ; $j++){
+                $index = $i*7+$j;
+                $jours = iterator_to_array($totaljourdelannee);
+                if(isset($jours[$index])){
+                    $semaine[] = $jours[$index];
+                }
+            }
+            $jourdelanneesemaine[] = $semaine;
+        }
+
         ////
         ////
         $top3 = $this->top3(5, $user);
@@ -48,7 +62,7 @@ class ControllerAffichage extends Controller
             'user' => $user,
             'totalpoids' => $totalpoids,
             'totalsceancedelannee' => $totalsceancedelannee,
-            'totaljourdelannee' => $totaljourdelannee,
+            'jourdelanneesemaine' => $jourdelanneesemaine,
             'top3' => $top3,
             'favori' => $favori,
         ]);

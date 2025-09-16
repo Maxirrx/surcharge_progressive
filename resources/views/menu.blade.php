@@ -8,10 +8,59 @@
     <div class="grid grid-rows-[16.6vh_16.6vh_16.6vh_16.6vh_16.6vh] grid-cols-6 gap-[1vh]">
         <div
             class="col-span-4 row-span-1 bg-blanc text-black rounded-[1.8vw] flex items-center justify-center p-5 text-xl font-medium ">
-            <div
-                class=" grid grid-flow-col grid-rows-7 h-[75%] w-[90%] gap-[3px]"> @foreach($totaljourdelannee as $jour)
-                    <div class=" rounded-sm bg-orange h-[10px] w-[10px] col-span-1 row-span-1"></div>
-                @endforeach</div>
+            <div class="h-[75%] w-[90%] gap-[3px] text-xs flex justify-center items-center">
+                <table class="border-separate border-spacing-[2px]">
+                    @php
+                        $monthindex = isset($jourdelanneesemaine[1][1]) ? $jourdelanneesemaine[1][1]->month : 0;
+                    @endphp
+                    <thead>
+                    @for($j = 0; $j<7 ;$j++)
+                        <tr>
+                            @for($i = 0; $i<count($jourdelanneesemaine);$i++)
+                                @if(isset($jourdelanneesemaine[$i][$j]))
+                                    @if($monthindex>=13 && $jourdelanneesemaine[$i][0]->month<12)
+                                        @php
+                                            $monthindex = isset($jourdelanneesemaine[$i][$j]) ? $jourdelanneesemaine[$i][$j]->month : 0;
+                                        @endphp
+                                    @endif
+                                    @if($jourdelanneesemaine[$i][0]->month === $monthindex && $j===0)
+                                        @php
+                                            $monthindex++
+                                        @endphp
+                                        <th class="relative w-[15px] h-[15px] ">
+                                              <span class="absolute whitespace-nowrap overflow-visible">
+                                                {{$jourdelanneesemaine[$i][$j]->format('M')}}
+                                              </span>
+
+                                        </th>
+                                    @else
+                                        <th></th>
+
+                                    @endif
+                                @endif
+                            @endfor
+                        </tr>
+                    @endfor
+                    </thead>
+                    <tbody>
+                    @for($j = 0; $j<7 ;$j++)
+                        <tr>
+                            @for($i = 0; $i<count($jourdelanneesemaine);$i++)
+                                @if(isset($jourdelanneesemaine[$i][$j]))
+
+                                    @if($totalsceancedelannee->contains($jourdelanneesemaine[$i][$j]->format("Y-m-d")))
+                                        <td class="rounded-[4px] w-[15px] h-[15px] bg-orange "></td>
+                                    @else
+                                        <td class="rounded-[4px] w-[15px] h-[15px] bg-gris-clair"></td>
+                                    @endif
+
+                                @endif
+                            @endfor
+                        </tr>
+                    @endfor
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div
             class="col-span-2 row-span-1 bg-blanc text-black rounded-[1.8vw] flex items-center justify-center p-5 text-xl font-medium">

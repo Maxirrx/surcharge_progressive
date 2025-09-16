@@ -20,5 +20,11 @@ class WorkoutSessionSeeder extends Seeder
              'dateofworkout' => Date("Y-m-d"),
             ]
         ]);
+        DB::table("workout_session")->insert([
+            ['user_id'=> 1,
+                'workout_id'=> 1,
+                'dateofworkout' => '2025-01-01',
+            ]
+        ]);
     }
 }
