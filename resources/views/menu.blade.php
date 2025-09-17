@@ -64,7 +64,7 @@
         </div>
         <div
             class="col-span-2 row-span-1 bg-blanc text-black rounded-[1.8vw] grid p-[1vh] pl-[2vh] text-xl font-medium">
-            <p class="text-4xl">
+            <p class="text-4xl ">
             <div class="text-orange text-6xl font-normal"> Scéance {{$nextsceance}}</div>
             prochaine sceance
         </div>
