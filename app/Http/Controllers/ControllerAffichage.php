@@ -12,17 +12,22 @@ use App\Models\workout_template;
 use App\Models\favorites;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Date;
 
 class ControllerAffichage extends Controller
 {
     public function index(Request $request){
         $user = Auth::user();
-        $nbsceances = workout_session::where('user_id', $user->id)->count();
+        $date30DaysAgo = Carbon::now()->subDays(30);
+        $nbsceances = workout_session::where('user_id', $user->id)
+            ->where('dateofworkout', '>=', $date30DaysAgo)
+            ->where('isfinished', true)
+            ->count();
 
         ////
-        $date30DaysAgo = Carbon::now()->subDays(30);
         $sessionIds = workout_session::where('user_id', $user->id)
             ->where('dateofworkout', '>=', $date30DaysAgo)
+            ->where('isfinished', true)
             ->pluck('id');
         $totalpoids = Performance::whereIn('workout_id', $sessionIds)->sum('poids');
         ////
@@ -32,6 +37,7 @@ class ControllerAffichage extends Controller
         $totaljourdelannee = CarbonPeriod::create($start, '1day',$end);
         $totalsceancedelannee = workout_session::where('user_id', $user->id)
             ->whereBetween('dateofworkout', [$start, $end])
+            ->where('isfinished', true)
             ->pluck('dateofworkout');
         $jourdelanneesemaine = [];
 
@@ -54,8 +60,17 @@ class ControllerAffichage extends Controller
         ////
         $favori = workout_template::whereIn(
             'id',
-            favorites::where('user_id', $user->id)->pluck('workout_template_id')
-        )->pluck('name');
+            favorites::where('user_id', $user->id)->pluck('workout_template_id'))
+            ->pluck('name');
+
+
+        $nextsceanceid = workout_session::where('dateofworkout', '>=', Carbon::now())
+            ->where('isfinished', false)
+            ->orderBy('dateofworkout', 'asc')
+            ->pluck('workout_id')
+            ->first();
+
+        $nextsceance = workout_template::where("id" , $nextsceanceid)->pluck("name")->first();;
 
         return view('menu', [
             'nbsceances' => $nbsceances,
@@ -65,56 +80,13 @@ class ControllerAffichage extends Controller
             'jourdelanneesemaine' => $jourdelanneesemaine,
             'top3' => $top3,
             'favori' => $favori,
+            'nextsceance' => $nextsceance,
         ]);
     }
 
     public function top3(int $lastday,User $user)
     {
-        $programmeuser = workout_template::where('user_id', $user->id)->pluck('id');
-        $evolution = [];
-        foreach ($programmeuser as $programme) {
-            $sessions = workout_session::where('workout_id', $programme)
-                ->orderBy('dateofworkout')
-                ->limit(10)
-                ->pluck('id');
-
-            if ($sessions->count() < $lastday) {
-                return false;
-            }
-
-            $lastsession = $sessions[0];
-            $fisrtsession = $sessions[$lastday-1];
-
-            $lastPerformances = Performance::where('workout_id', $lastsession)->get();
-            $tenthPerformances = Performance::where('workout_id', $fisrtsession)->get();
-
-            $lastData = $lastPerformances->groupBy('exercices_id')->map(function ($group) {
-                return $group->sum('poids');
-            });
-
-            $tenthData = $tenthPerformances->groupBy('exercices_id')->map(function ($group) {
-                return $group->sum('poids');
-            });
-
-            foreach ($lastData as $exerciceId => $lastPoids) {
-                $oldPoids = $tenthData->get($exerciceId, 0);
-
-                if ($oldPoids == 0) {
-                    $percentChange = 100;
-                } else {
-                    $percentChange = (($lastPoids - $oldPoids) / $oldPoids) * 100;
-                }
-
-                if (!isset($evolution[$exerciceId])) {
-                    $evolution[$exerciceId] = $percentChange;
-                } else {
-                    $evolution[$exerciceId] = max($evolution[$exerciceId], $percentChange);
-                }
-            }
-        }
-        return collect($evolution)
-            ->sortDesc()
-            ->take(3);
+        return false;
     }
 }
 

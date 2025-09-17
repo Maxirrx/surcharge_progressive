@@ -21,6 +21,8 @@ class ExercicesSeeder extends Seeder
                 'nb_rep_max' => 12,
                 'nb_series' => 3,
                 'muscle_id' => 2,
+                'user_id' => 2,
+                'public' => false,
             ],
             [
                 'name' => 'Tractions pronation',
@@ -28,6 +30,8 @@ class ExercicesSeeder extends Seeder
                 'nb_rep_max' => 12,
                 'nb_series' => 3,
                 'muscle_id' => 1,
+                'user_id' => 2,
+                'public' => false,
             ],
             [
                 'name' => 'Développé militaire',
@@ -35,6 +39,8 @@ class ExercicesSeeder extends Seeder
                 'nb_rep_max' => 12,
                 'nb_series' => 3,
                 'muscle_id' => 3,
+                'user_id' => 2,
+                'public' => false,
             ],
             [
                 'name' => 'Curl biceps',
@@ -42,6 +48,8 @@ class ExercicesSeeder extends Seeder
                 'nb_rep_max' => 12,
                 'nb_series' => 3,
                 'muscle_id' => 4,
+                'user_id' => 2,
+                'public' => false,
             ],
             [
                 'name' => 'Extensions triceps poulie',
@@ -49,6 +57,8 @@ class ExercicesSeeder extends Seeder
                 'nb_rep_max' => 12,
                 'nb_series' => 3,
                 'muscle_id' => 5,
+                'user_id' => 2,
+                'public' => false,
             ],
             [
                 'name' => 'Squat',
@@ -56,6 +66,8 @@ class ExercicesSeeder extends Seeder
                 'nb_rep_max' => 12,
                 'nb_series' => 3,
                 'muscle_id' => 6,
+                'user_id' => 2,
+                'public' => false,
             ],
             [
                 'name' => 'Fentes avant',
@@ -63,6 +75,8 @@ class ExercicesSeeder extends Seeder
                 'nb_rep_max' => 12,
                 'nb_series' => 3,
                 'muscle_id' => 6,
+                'user_id' => 2,
+                'public' => false,
             ],
             [
                 'name' => 'Crunch au sol',
@@ -70,6 +84,8 @@ class ExercicesSeeder extends Seeder
                 'nb_rep_max' => 20,
                 'nb_series' => 3,
                 'muscle_id' => 7,
+                'user_id' => 2,
+                'public' => false,
             ],
         ]);
     }

@@ -35,88 +35,133 @@ class PerformanceSeeder extends Seeder
             'nb_repetition' => 7,
         ]);
         DB::table("performance")->insert([
-            'workout_id' => 1,
-            'exercices_id' => 2,
+            'workout_id' => 2,
+            'exercices_id' => 1,
             'numero_series' => 1,
             'poids' => 50,
             'nb_repetition' => 7,
         ]);
         DB::table("performance")->insert([
-            'workout_id' => 1,
-            'exercices_id' => 2,
+            'workout_id' => 2,
+            'exercices_id' => 1,
+            'numero_series' => 2,
+            'poids' => 50,
+            'nb_repetition' => 7,
+        ]);
+        DB::table("performance")->insert([
+            'workout_id' => 2,
+            'exercices_id' => 1,
+            'numero_series' => 3,
+            'poids' => 50,
+            'nb_repetition' => 7,
+        ]);
+        DB::table("performance")->insert([
+            'workout_id' => 3,
+            'exercices_id' => 1,
             'numero_series' => 1,
             'poids' => 50,
             'nb_repetition' => 7,
         ]);
         DB::table("performance")->insert([
-            'workout_id' => 1,
-            'exercices_id' => 2,
+            'workout_id' => 3,
+            'exercices_id' => 1,
+            'numero_series' => 2,
+            'poids' => 50,
+            'nb_repetition' => 7,
+        ]);
+        DB::table("performance")->insert([
+            'workout_id' => 3,
+            'exercices_id' => 1,
+            'numero_series' => 3,
+            'poids' => 50,
+            'nb_repetition' => 7,
+        ]);
+        DB::table("performance")->insert([
+            'workout_id' => 4,
+            'exercices_id' => 1,
             'numero_series' => 1,
             'poids' => 50,
             'nb_repetition' => 7,
         ]);
         DB::table("performance")->insert([
-            'workout_id' => 1,
-            'exercices_id' => 3,
-            'numero_series' => 1,
+            'workout_id' => 4,
+            'exercices_id' => 1,
+            'numero_series' => 2,
             'poids' => 50,
             'nb_repetition' => 7,
         ]);
         DB::table("performance")->insert([
-            'workout_id' => 1,
-            'exercices_id' => 3,
-            'numero_series' => 1,
+            'workout_id' => 4,
+            'exercices_id' => 1,
+            'numero_series' => 3,
             'poids' => 50,
             'nb_repetition' => 7,
         ]);
         DB::table("performance")->insert([
-            'workout_id' => 1,
-            'exercices_id' => 3,
+            'workout_id' => 5,
+            'exercices_id' => 1,
             'numero_series' => 1,
-            'poids' => 50,
+            'poids' => 100,
             'nb_repetition' => 7,
         ]);
         DB::table("performance")->insert([
-            'workout_id' => 1,
-            'exercices_id' => 4,
-            'numero_series' => 1,
-            'poids' => 50,
+            'workout_id' => 5,
+            'exercices_id' => 1,
+            'numero_series' => 2,
+            'poids' => 100,
             'nb_repetition' => 7,
         ]);
         DB::table("performance")->insert([
-            'workout_id' => 1,
-            'exercices_id' => 4,
-            'numero_series' => 1,
-            'poids' => 50,
+            'workout_id' => 5,
+            'exercices_id' => 1,
+            'numero_series' => 3,
+            'poids' => 100,
             'nb_repetition' => 7,
         ]);
         DB::table("performance")->insert([
-            'workout_id' => 1,
-            'exercices_id' => 4,
-            'numero_series' => 1,
-            'poids' => 50,
-            'nb_repetition' => 7,
+            'workout_id' => 1, 'exercices_id' => 4, 'numero_series' => 1, 'poids' => 50, 'nb_repetition' => 7,
         ]);
         DB::table("performance")->insert([
-            'workout_id' => 1,
-            'exercices_id' => 5,
-            'numero_series' => 1,
-            'poids' => 50,
-            'nb_repetition' => 7,
+            'workout_id' => 1, 'exercices_id' => 4, 'numero_series' => 2, 'poids' => 50, 'nb_repetition' => 7,
         ]);
         DB::table("performance")->insert([
-            'workout_id' => 1,
-            'exercices_id' => 5,
-            'numero_series' => 1,
-            'poids' => 50,
-            'nb_repetition' => 7,
+            'workout_id' => 1, 'exercices_id' => 4, 'numero_series' => 3, 'poids' => 50, 'nb_repetition' => 7,
         ]);
         DB::table("performance")->insert([
-            'workout_id' => 1,
-            'exercices_id' => 5,
-            'numero_series' => 1,
-            'poids' => 50,
-            'nb_repetition' => 7,
+            'workout_id' => 2, 'exercices_id' => 4, 'numero_series' => 1, 'poids' => 50, 'nb_repetition' => 7,
+        ]);
+        DB::table("performance")->insert([
+            'workout_id' => 2, 'exercices_id' => 4, 'numero_series' => 2, 'poids' => 50, 'nb_repetition' => 7,
+        ]);
+        DB::table("performance")->insert([
+            'workout_id' => 2, 'exercices_id' => 4, 'numero_series' => 3, 'poids' => 50, 'nb_repetition' => 7,
+        ]);
+        DB::table("performance")->insert([
+            'workout_id' => 3, 'exercices_id' => 4, 'numero_series' => 1, 'poids' => 50, 'nb_repetition' => 7,
+        ]);
+        DB::table("performance")->insert([
+            'workout_id' => 3, 'exercices_id' => 4, 'numero_series' => 2, 'poids' => 50, 'nb_repetition' => 7,
+        ]);
+        DB::table("performance")->insert([
+            'workout_id' => 3, 'exercices_id' => 4, 'numero_series' => 3, 'poids' => 50, 'nb_repetition' => 7,
+        ]);
+        DB::table("performance")->insert([
+            'workout_id' => 4, 'exercices_id' => 4, 'numero_series' => 1, 'poids' => 50, 'nb_repetition' => 7,
+        ]);
+        DB::table("performance")->insert([
+            'workout_id' => 4, 'exercices_id' => 4, 'numero_series' => 2, 'poids' => 50, 'nb_repetition' => 7,
+        ]);
+        DB::table("performance")->insert([
+            'workout_id' => 4, 'exercices_id' => 4, 'numero_series' => 3, 'poids' => 50, 'nb_repetition' => 7,
+        ]);
+        DB::table("performance")->insert([
+            'workout_id' => 5, 'exercices_id' => 4, 'numero_series' => 1, 'poids' => 100, 'nb_repetition' => 7,
+        ]);
+        DB::table("performance")->insert([
+            'workout_id' => 5, 'exercices_id' => 4, 'numero_series' => 2, 'poids' => 100, 'nb_repetition' => 7,
+        ]);
+        DB::table("performance")->insert([
+            'workout_id' => 5, 'exercices_id' => 4, 'numero_series' => 3, 'poids' => 100, 'nb_repetition' => 7,
         ]);
         DB::table("performance")->insert([
             'workout_id' => 1,
@@ -128,14 +173,102 @@ class PerformanceSeeder extends Seeder
         DB::table("performance")->insert([
             'workout_id' => 1,
             'exercices_id' => 6,
-            'numero_series' => 1,
+            'numero_series' => 2,
             'poids' => 50,
             'nb_repetition' => 7,
         ]);
         DB::table("performance")->insert([
             'workout_id' => 1,
             'exercices_id' => 6,
+            'numero_series' => 3,
+            'poids' => 50,
+            'nb_repetition' => 7,
+        ]);
+
+        DB::table("performance")->insert([
+            'workout_id' => 2,
+            'exercices_id' => 6,
             'numero_series' => 1,
+            'poids' => 50,
+            'nb_repetition' => 7,
+        ]);
+        DB::table("performance")->insert([
+            'workout_id' => 2,
+            'exercices_id' => 6,
+            'numero_series' => 2,
+            'poids' => 50,
+            'nb_repetition' => 7,
+        ]);
+        DB::table("performance")->insert([
+            'workout_id' => 2,
+            'exercices_id' => 6,
+            'numero_series' => 3,
+            'poids' => 50,
+            'nb_repetition' => 7,
+        ]);
+
+        DB::table("performance")->insert([
+            'workout_id' => 3,
+            'exercices_id' => 6,
+            'numero_series' => 1,
+            'poids' => 50,
+            'nb_repetition' => 7,
+        ]);
+        DB::table("performance")->insert([
+            'workout_id' => 3,
+            'exercices_id' => 6,
+            'numero_series' => 2,
+            'poids' => 50,
+            'nb_repetition' => 7,
+        ]);
+        DB::table("performance")->insert([
+            'workout_id' => 3,
+            'exercices_id' => 6,
+            'numero_series' => 3,
+            'poids' => 50,
+            'nb_repetition' => 7,
+        ]);
+
+        DB::table("performance")->insert([
+            'workout_id' => 4,
+            'exercices_id' => 6,
+            'numero_series' => 1,
+            'poids' => 50,
+            'nb_repetition' => 7,
+        ]);
+        DB::table("performance")->insert([
+            'workout_id' => 4,
+            'exercices_id' => 6,
+            'numero_series' => 2,
+            'poids' => 50,
+            'nb_repetition' => 7,
+        ]);
+        DB::table("performance")->insert([
+            'workout_id' => 4,
+            'exercices_id' => 6,
+            'numero_series' => 3,
+            'poids' => 50,
+            'nb_repetition' => 7,
+        ]);
+
+        DB::table("performance")->insert([
+            'workout_id' => 5,
+            'exercices_id' => 6,
+            'numero_series' => 1,
+            'poids' => 50,
+            'nb_repetition' => 7,
+        ]);
+        DB::table("performance")->insert([
+            'workout_id' => 5,
+            'exercices_id' => 6,
+            'numero_series' => 2,
+            'poids' => 50,
+            'nb_repetition' => 7,
+        ]);
+        DB::table("performance")->insert([
+            'workout_id' => 5,
+            'exercices_id' => 6,
+            'numero_series' => 3,
             'poids' => 50,
             'nb_repetition' => 7,
         ]);

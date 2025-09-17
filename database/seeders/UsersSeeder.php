@@ -22,5 +22,13 @@ class UsersSeeder extends Seeder
             'height' => 180,
             'gender' => true,
         ]);
+        DB::table('users')->insert([
+            'login' => 'Jules',
+            'password' => Hash::make('azer'),
+            'age' => 23,
+            'weight' => 108.2,
+            'height' => 192,
+            'gender' => true,
+        ]);
     }
 }

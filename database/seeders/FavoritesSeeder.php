@@ -24,5 +24,25 @@ class FavoritesSeeder extends Seeder
             'user_id' => '1',
             'workout_template_id' => '3',
         ]);
+        DB::table('favorites')->insert([
+            'user_id' => '2',
+            'workout_template_id' => '1',
+        ]);
+        DB::table('favorites')->insert([
+            'user_id' => '2',
+            'workout_template_id' => '2',
+        ]);
+        DB::table('favorites')->insert([
+            'user_id' => '2',
+            'workout_template_id' => '3',
+        ]);
+        DB::table('favorites')->insert([
+            'user_id' => '2',
+            'workout_template_id' => '4',
+        ]);
+        DB::table('favorites')->insert([
+            'user_id' => '2',
+            'workout_template_id' => '5',
+        ]);
     }
 }

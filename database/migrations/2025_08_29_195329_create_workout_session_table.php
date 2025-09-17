@@ -16,6 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreignId('workout_id')->constrained('workout_template');
             $table->date('dateofworkout');
+            $table->integer('order')->default(1);
+            $table->boolean('isfinished')->default(false);
         });
     }
 

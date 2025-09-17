@@ -15,16 +15,68 @@ class WorkoutSessionSeeder extends Seeder
     public function run(): void
     {
         DB::table("workout_session")->insert([
-            ['user_id'=> 1,
-             'workout_id'=> 1,
-             'dateofworkout' => Date("Y-m-d"),
-            ]
+            ['user_id' => 2,
+                'workout_id' => 4,
+                'dateofworkout' => '2025-09-01',
+                'isfinished' => true]
         ]);
         DB::table("workout_session")->insert([
-            ['user_id'=> 1,
-                'workout_id'=> 1,
-                'dateofworkout' => '2025-01-01',
-            ]
+            ['user_id' => 2,
+                'workout_id' => 4,
+                'dateofworkout' => '2025-09-02',
+                'isfinished' => true]
         ]);
+        DB::table("workout_session")->insert([
+            ['user_id' => 2,
+                'workout_id' => 4,
+                'dateofworkout' => '2025-09-03',
+                'isfinished' => true]
+        ]);
+        DB::table("workout_session")->insert([
+            ['user_id' => 2,
+                'workout_id' => 4,
+                'dateofworkout' => '2025-09-04',
+                'isfinished' => true]
+        ]);
+        DB::table("workout_session")->insert([
+            ['user_id' => 2,
+                'workout_id' => 4,
+                'dateofworkout' => '2025-09-05',
+                'isfinished' => true]
+        ]);
+        DB::table("workout_session")->insert([
+            ['user_id' => 2, 'workout_id' => 5, 'dateofworkout' => '2025-09-06', 'isfinished' => true]
+        ]);
+        DB::table("workout_session")->insert([
+            ['user_id' => 2, 'workout_id' => 5, 'dateofworkout' => '2025-09-07', 'isfinished' => true]
+        ]);
+        DB::table("workout_session")->insert([
+            ['user_id' => 2, 'workout_id' => 5, 'dateofworkout' => '2025-09-08', 'isfinished' => true]
+        ]);
+        DB::table("workout_session")->insert([
+            ['user_id' => 2, 'workout_id' => 5, 'dateofworkout' => '2025-09-09', 'isfinished' => true]
+        ]);
+        DB::table("workout_session")->insert([
+            ['user_id' => 2, 'workout_id' => 5, 'dateofworkout' => '2025-09-10', 'isfinished' => true]
+        ]);
+        DB::table("workout_session")->insert([
+            ['user_id' => 2, 'workout_id' => 6, 'dateofworkout' => '2025-09-11', 'isfinished' => true]
+        ]);
+        DB::table("workout_session")->insert([
+            ['user_id' => 2, 'workout_id' => 6, 'dateofworkout' => '2025-09-12', 'isfinished' => true]
+        ]);
+        DB::table("workout_session")->insert([
+            ['user_id' => 2, 'workout_id' => 6, 'dateofworkout' => '2025-09-13', 'isfinished' => true]
+        ]);
+        DB::table("workout_session")->insert([
+            ['user_id' => 2, 'workout_id' => 6, 'dateofworkout' => '2025-09-14', 'isfinished' => true]
+        ]);
+        DB::table("workout_session")->insert([
+            ['user_id' => 2, 'workout_id' => 6, 'dateofworkout' => '2025-09-15', 'isfinished' => true]
+        ]);
+        DB::table("workout_session")->insert([
+            ['user_id' => 2, 'workout_id' => 6, 'dateofworkout' => '2025-10-18', 'isfinished' => false]
+        ]);
+
     }
 }

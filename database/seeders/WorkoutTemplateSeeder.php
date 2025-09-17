@@ -25,5 +25,17 @@ class WorkoutTemplateSeeder extends Seeder
             'name' => 'pull Test',
             'user_id' => 1
         ]);
+        DB::table('workout_template')->insert([
+            'name' => 'push',
+            'user_id' => 2
+        ]);
+        DB::table('workout_template')->insert([
+            'name' => 'pull',
+            'user_id' => 2
+        ]);
+        DB::table('workout_template')->insert([
+            'name' => 'legs',
+            'user_id' => 2
+        ]);
     }
 }

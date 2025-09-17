@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer('nb_rep_max');
             $table->integer('nb_series');
             $table->foreignId('muscle_id')->constrained();
+            $table->foreignId('user_id')->constrained();
+            $table->boolean('public')->default(false);
         });
     }
 
