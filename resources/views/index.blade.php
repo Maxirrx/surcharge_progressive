@@ -11,7 +11,7 @@
 <div class="text-5xl font-bold text-black p-6 h-[7vh]">@yield('nomdepage') </div>
 <div class="h-screen p-[2vh]">
 <div class="flex h-[87vh] gap-[1vh]">
-    <div class="flex flex-col gap-8 bg-gris-clair text-black rounded-[1.8vw] pt-8 p-8 h-full w-[15vw] font-bold text-2xl" >
+    <div class="flex flex-col gap-8 bg-gris-clair text-black rounded-[1.8vw] pt-8 p-8 h-full w-[15vw] font-extrablack text-3xl" >
         <a href="/menu">Menu</a>
         <a href="/profil">Profil</a>
         <a href="/workout">Workout</a>
