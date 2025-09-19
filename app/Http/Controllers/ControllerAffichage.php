@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Date;
 
 class ControllerAffichage extends Controller
 {
-    public function index(Request $request){
+    public function index(){
         $user = Auth::user();
         $date30DaysAgo = Carbon::now()->subDays(30);
         $nbsceances = workout_session::where('user_id', $user->id)
@@ -29,7 +29,9 @@ class ControllerAffichage extends Controller
             ->where('dateofworkout', '>=', $date30DaysAgo)
             ->where('isfinished', true)
             ->pluck('id');
-        $totalpoids = Performance::whereIn('workout_id', $sessionIds)->sum('poids');
+        $totalpoids = Performance::whereIn('workout_id', $sessionIds)
+            ->selectRaw('sum(poids * nb_repetition) as totalpoids')
+            ->value('totalpoids');
         ////
         ////
         $end = Carbon::now()->endOfDay();;
@@ -55,7 +57,7 @@ class ControllerAffichage extends Controller
 
         ////
         ////
-        $top3 = $this->top3(5, $user);
+        $top3 = false;
         ////
         ////
         $favori = workout_template::whereIn(
@@ -70,7 +72,7 @@ class ControllerAffichage extends Controller
             ->pluck('workout_id')
             ->first();
 
-        $nextsceance = workout_template::where("id" , $nextsceanceid)->pluck("name")->first();;
+        $nextsceance = workout_template::where("id" , $nextsceanceid)->select("name", "id")->first();;
 
         return view('menu', [
             'nbsceances' => $nbsceances,
@@ -82,11 +84,6 @@ class ControllerAffichage extends Controller
             'favori' => $favori,
             'nextsceance' => $nextsceance,
         ]);
-    }
-
-    public function top3(int $lastday,User $user)
-    {
-        return false;
     }
 }
 

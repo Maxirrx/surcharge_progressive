@@ -9,7 +9,7 @@ use App\Http\Controllers\ControllerWorkout;
 use App\Http\Controllers\ControllerCommunaute;
 use App\Http\Controllers\ControllerStatistique;
 use App\Http\Controllers\ControllerParametre;
-
+use \App\Http\Controllers\FunctionControllerjson;
 
 
 Route::get('/', function () {
@@ -20,8 +20,6 @@ Route::post('/verif', [Connexion::class, 'connexion']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/menu', [ControllerAffichage::class, 'index']);
-
-
 
     Route::get('/profil', [ControllerProfil::class, 'index']);
 
@@ -34,4 +32,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/communaute', [ControllerCommunaute::class, 'index']);
 
     Route::get('/parametre', [ControllerParametre::class, 'index']);
+
+    Route::post("/top3", [FunctionControllerjson::class, 'top3']);
+
+    Route::post("/graphique", [FunctionControllerjson::class, 'graphique']);
+
+
 });

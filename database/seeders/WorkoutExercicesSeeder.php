@@ -20,9 +20,12 @@ class WorkoutExercicesSeeder extends Seeder
             ['exercices_id' => 4, 'workout_template_id' => 1],
             ['exercices_id' => 5, 'workout_template_id' => 1],
             ['exercices_id' => 6, 'workout_template_id' => 1],
-            ['exercices_id' => 1, 'workout_template_id' => 4],
-            ['exercices_id' => 4, 'workout_template_id' => 5],
-            ['exercices_id' => 6, 'workout_template_id' => 6],
+            ['exercices_id' => 7, 'workout_template_id' => 2],
+            ['exercices_id' => 8, 'workout_template_id' => 2],
+            ['exercices_id' => 9, 'workout_template_id' => 2],
+            ['exercices_id' => 10, 'workout_template_id' => 2],
+            ['exercices_id' => 11, 'workout_template_id' => 2],
+            ['exercices_id' => 12, 'workout_template_id' => 2],
         ]);
     }
 }

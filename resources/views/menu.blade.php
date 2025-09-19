@@ -2,7 +2,7 @@
 
 @section('title', 'Menu')
 
-@section('nomdepage', 'Bienvenue dans le menu principal '. $user->login )
+@section('nomdepage',  __("dashboard.bienvenue") . ' '. $user->login )
 
 @section('content')
     <div class="grid grid-rows-[16.6vh_16.6vh_16.6vh_16.6vh_16.6vh] grid-cols-6 gap-[1vh]">
@@ -65,8 +65,8 @@
         <div
             class="col-span-2 row-span-1 bg-blanc text-black rounded-[1.8vw] grid p-[1vh] pl-[2vh] text-xl font-medium">
             <p class="text-4xl ">
-            <div class="text-orange text-6xl font-normal"> Scéance {{$nextsceance}}</div>
-            prochaine sceance
+            <div class="text-orange text-6xl font-normal"> {{ __('dashboard.sceance') }} {{$nextsceance->name}}</div>
+            {{ __('dashboard.prochaine') }}
         </div>
         <div class="col-span-2 row-span-2 bg-blanc text-black rounded-[1.8vw] flex flex-col p-5 text-xl font-medium">
             @if(count($favori) === 0)
@@ -75,11 +75,13 @@
                 <p
                     class="font-bold text-2xl p-[1vh]">Vos entraînements favoris </p>
             <div class="grid grid-cols-1 gap-[3vh] p-[2vh] ">@for($i = 0; $i < 4 ; $i++)
+                    @if(isset($favori[$i]))
                     <div>{{$favori[$i]}}</div>
+                    @endif
                 @endfor</div>
             @endif
             @if(count($favori)> 4)
-                <a href="/workout" class="underline">Voir plus</a>
+                <a href="/workout" class="underline">{{ __('dashboard.voir+') }}</a>
             @endif
         </div>
         <div
@@ -97,19 +99,19 @@
             class="col-span-2 row-span-1 bg-blanc text-black rounded-[1.8vw] grid p-[1vh] pl-[2vh] text-xl font-medium">
             <p class="text-4xl">
             <div class="text-bleu text-6xl font-normal"> {{ $totalpoids }} Kg</div>
-            Total poids des 30 derniers jours
+            {{ __('dashboard.total') }}
         </div>
         <div
             class="col-span-1 row-span-1 bg-blanc text-black rounded-[1.8vw] grid p-[1vh] pl-[2vh] text-xl font-medium">
             <p class="text-4xl">
             <div class="text-bleu text-6xl font-normal"> {{ $user->weight }} Kg</div>
-            Poids actuel
+            {{ __('dashboard.poids') }}
         </div>
         <div
             class="col-span-1 row-span-1 bg-blanc text-black rounded-[1.8vw] grid p-[1vh] pl-[2vh] text-xl font-medium">
             <p class="text-4xl">
             <div class="text-orange text-6xl font-normal"> {{ $nbsceances }}</div>
-            Nombre de séances dans le mois
+            {{ __('dashboard.nombre') }}
         </div>
         <div
             class="col-span-4 row-span-2 bg-blanc text-black rounded-[1.8vw] flex items-center justify-center p-5 text-xl font-medium">
@@ -119,5 +121,6 @@
             <p class="text-5xl font-normal p-[2vh]">Keep pushing {{$user->login}}! Tomorrow we’ll try to add more weight on your
                 bench.</div>
     </div>
+
 @endsection
 

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('workout_session', function (Blueprint $table) {
-            $table->id();
+            $table->id()->primary();;
             $table->unsignedBigInteger('user_id');
             $table->foreignId('workout_id')->constrained('workout_template');
             $table->date('dateofworkout');
