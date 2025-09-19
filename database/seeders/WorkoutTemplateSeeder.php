@@ -14,15 +14,15 @@ class WorkoutTemplateSeeder extends Seeder
     public function run(): void
     {
         DB::table('workout_template')->insert([
-            'name' => 'Workout Test',
+            'name' => 'Push',
             'user_id' => 1
         ]);
         DB::table('workout_template')->insert([
-            'name' => 'push Test',
+            'name' => 'Pull',
             'user_id' => 1
         ]);
         DB::table('workout_template')->insert([
-            'name' => 'pull Test',
+            'name' => 'Leg',
             'user_id' => 1
         ]);
         DB::table('workout_template')->insert([

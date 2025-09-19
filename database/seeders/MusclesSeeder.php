@@ -32,7 +32,13 @@ class MusclesSeeder extends Seeder
             'name' => 'Avant-bras'
         ]);
         DB::table('muscles')->insert([
-            'name' => 'Jambes'
+            'name' => 'Quadriceps'
+        ]);
+        DB::table('muscles')->insert([
+            'name' => 'Iscio'
+        ]);
+        DB::table('muscles')->insert([
+            'name' => 'Mollet'
         ]);
         DB::table('muscles')->insert([
             'name' => 'Abdominaux'
