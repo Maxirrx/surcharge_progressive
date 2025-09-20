@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\User;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
@@ -13,6 +14,7 @@ use App\Models\favorites;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Date;
+use App\Http\Controllers\FunctionControllerjson;
 
 class ControllerAffichage extends Controller
 {
@@ -57,12 +59,14 @@ class ControllerAffichage extends Controller
 
         ////
         ////
-        $top3 = false;
+        $functioncontroller = new FunctionControllerjson();
+        $top3 = $functioncontroller->top3($user->id, 5);
         ////
         ////
         $favori = workout_template::whereIn(
             'id',
             favorites::where('user_id', $user->id)->pluck('workout_template_id'))
+            ->limit(4)
             ->pluck('name');
 
 
@@ -72,7 +76,9 @@ class ControllerAffichage extends Controller
             ->pluck('workout_id')
             ->first();
 
-        $nextsceance = workout_template::where("id" , $nextsceanceid)->select("name", "id")->first();;
+        $nextsceance = workout_template::where("id" , $nextsceanceid)->select("name", "id")->first();
+
+        $graphique = $functioncontroller->graphique($user->id, 5, 6);
 
         return view('menu', [
             'nbsceances' => $nbsceances,
@@ -83,6 +89,7 @@ class ControllerAffichage extends Controller
             'top3' => $top3,
             'favori' => $favori,
             'nextsceance' => $nextsceance,
+            'graphique' => $graphique,
         ]);
     }
 }

@@ -36,7 +36,8 @@ class WorkoutSessionSeeder extends Seeder
             ['id' => 112, 'user_id' => 2, 'workout_id' => 6, 'dateofworkout' => '2025-09-13', 'isfinished' => true],
             ['id' => 113, 'user_id' => 2, 'workout_id' => 6, 'dateofworkout' => '2025-09-14', 'isfinished' => true],
             ['id' => 114, 'user_id' => 2, 'workout_id' => 6, 'dateofworkout' => '2025-09-15', 'isfinished' => true],
-            ['id' => 115, 'user_id' => 2, 'workout_id' => 6, 'dateofworkout' => '2025-10-18', 'isfinished' => false],
+            ['id' => 115, 'user_id' => 2, 'workout_id' => 6, 'dateofworkout' => '2025-09-16', 'isfinished' => true],
+            ['id' => 116, 'user_id' => 2, 'workout_id' => 6, 'dateofworkout' => '2025-10-18', 'isfinished' => false],
         ]);
 
 

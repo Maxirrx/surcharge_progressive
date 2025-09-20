@@ -14,7 +14,7 @@ use \App\Http\Controllers\FunctionControllerjson;
 
 Route::get('/', function () {
     return view('connexion');
-});
+})->name('login');
 
 Route::post('/verif', [Connexion::class, 'connexion']);
 
@@ -33,7 +33,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/parametre', [ControllerParametre::class, 'index']);
 
-    Route::post("/top3", [FunctionControllerjson::class, 'top3']);
+    Route::get("/top3", [FunctionControllerjson::class, 'top3json']);
 
     Route::post("/graphique", [FunctionControllerjson::class, 'graphique']);
 
