@@ -74,11 +74,10 @@
             @else
                 <p
                     class="font-bold text-2xl p-[1vh]">Vos entraînements favoris </p>
-            <div class="grid grid-cols-1 gap-[3vh] p-[2vh] ">@for($i = 0; $i < 4 ; $i++)
-                    @if(isset($favori[$i]))
-                    <div>{{$favori[$i]}}</div>
-                    @endif
-                @endfor</div>
+            <div class="grid grid-cols-1 gap-[3vh] p-[2vh] ">@foreach($favori as $fave)
+
+                    <div>{{$fave}}</div>
+                @endforeach</div>
             @endif
             @if(count($favori)> 4)
                 <a href="/workout" class="underline">{{ __('dashboard.voir+') }}</a>
@@ -91,8 +90,8 @@
                     s'entrainer 😉</p>
             @else
                 <p class="font-bold text-2xl p-[1vh]">Vos meilleures perf </p>
-                <div class="grid grid-cols-1 gap-[3vh] p-[2vh] ">@foreach($top3 as $top)
-                        <div>{{$top}}</div>
+                <div class="grid grid-cols-1 gap-[3vh] p-[2vh] ">@foreach($top3 as $key=>$top)
+                        <div>{{$key}}.  :  .{{$top}}</div>
                     @endforeach</div>
             @endif</div>
         <div
@@ -115,12 +114,11 @@
         </div>
         <div
             class="col-span-4 row-span-2 bg-blanc text-black rounded-[1.8vw] flex items-center justify-center p-5 text-xl font-medium">
-            <p>graphique</div>
+            <p>{{$graphique}}</div>
         <div
             class="col-span-2 row-span-2 bg-blanc text-black rounded-[1.8vw] flex items-center justify-center p-5 text-xl font-medium">
             <p class="text-5xl font-normal p-[2vh]">Keep pushing {{$user->login}}! Tomorrow we’ll try to add more weight on your
                 bench.</div>
     </div>
-
 @endsection
 
