@@ -75,9 +75,7 @@
                 <p
                     class="font-bold text-2xl p-[1vh]">Vos entraînements favoris </p>
             <div class="grid grid-cols-1 gap-[3vh] p-[2vh] ">@for($i = 0; $i < 4 ; $i++)
-                    @if(isset($favori[$i]))
                     <div>{{$favori[$i]}}</div>
-                    @endif
                 @endfor</div>
             @endif
             @if(count($favori)> 4)
@@ -121,6 +119,5 @@
             <p class="text-5xl font-normal p-[2vh]">Keep pushing {{$user->login}}! Tomorrow we’ll try to add more weight on your
                 bench.</div>
     </div>
-
 @endsection
 
