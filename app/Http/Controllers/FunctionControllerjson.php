@@ -13,8 +13,8 @@ class FunctionControllerjson extends Controller
 
     public function top3json(Request $request)
     {
-        $iduser = $request->query('iduser');
-        $limite = $request->query('limite');
+        $iduser = $request->input('iduser');
+        $limite = $request->input('limite');
 
         return $this->top3($iduser, $limite);
     }
@@ -37,6 +37,9 @@ class FunctionControllerjson extends Controller
                 ->pluck('id')
                 ->first();
 
+            if ($sceancedebut == null){
+                return false;
+            }
 
             $sceancefin = workout_session::where('workout_id', $sceance)
                 ->where('isfinished', true)
@@ -68,10 +71,7 @@ class FunctionControllerjson extends Controller
 
                 $evolution[$nomexo] = round($pourcentage, 2);
             }
-
-
         }
-
             return($evolution);
     }
 
@@ -92,6 +92,8 @@ class FunctionControllerjson extends Controller
             ->orderBy('dateofworkout', 'desc')
             ->limit($limite)
             ->pluck('id');
+
+
 
         $totalpoidsexodebut = performance::whereIn('workout_id', $sceanceIds)
             ->select('workout_id', 'exercices_id', performance::raw('SUM(poids * nb_repetition) as total_poids'))

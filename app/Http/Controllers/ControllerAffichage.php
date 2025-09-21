@@ -70,8 +70,13 @@ class ControllerAffichage extends Controller
             ->pluck('name');
 
 
+        $phrase =__('motivation');
+        $randomkey = array_rand($phrase);
+        $randomphrase = $phrase[$randomkey];
+
         $nextsceanceid = workout_session::where('dateofworkout', '>=', Carbon::now())
             ->where('isfinished', false)
+            ->where('user_id' , $user->id)
             ->orderBy('dateofworkout', 'asc')
             ->pluck('workout_id')
             ->first();
@@ -90,6 +95,7 @@ class ControllerAffichage extends Controller
             'favori' => $favori,
             'nextsceance' => $nextsceance,
             'graphique' => $graphique,
+            'randomphrase' => $randomphrase,
         ]);
     }
 }
