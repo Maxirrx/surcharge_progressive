@@ -7,7 +7,15 @@
     --color-blanc: #F9F9F9;
     --color-gris-clair: #E8E8E8;
     --color-gris-fond: #D9D9D9;
+    --color-vert: #46A758;
     --font-weight-extrablack: 1000;
+
+}
+@theme dark{
+    --color-black: #EEEEEE;
+    --color-blanc: #191919;
+    --color-gris-clair: #2A2A2A;
+    --color-gris-fond: #3A3A3A;
 }
 
 

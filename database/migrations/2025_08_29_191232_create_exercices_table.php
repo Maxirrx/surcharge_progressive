@@ -14,9 +14,6 @@ return new class extends Migration
         Schema::create('exercices', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('nb_rep_min');
-            $table->integer('nb_rep_max');
-            $table->integer('nb_series');
             $table->foreignId('muscle_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->boolean('public')->default(false);

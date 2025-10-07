@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('exercices_workout_template', function (Blueprint $table) {
-            $table->id();
+//            $table->id();
+            $table->integer('nb_rep_min');
+            $table->integer('nb_rep_max');
+            $table->integer('nb_series');
             $table->foreignId('exercices_id')->constrained('exercices')->onDelete('cascade');
             $table->foreignId('workout_template_id')->constrained('workout_template')->onDelete('cascade');
         });

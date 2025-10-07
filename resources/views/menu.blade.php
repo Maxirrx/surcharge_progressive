@@ -49,9 +49,16 @@
                                 @if(isset($jourdelanneesemaine[$i][$j]))
 
                                     @if($totalsceancedelannee->contains($jourdelanneesemaine[$i][$j]->format("Y-m-d")))
-                                        <td class="rounded-[4px] w-[1.4vh] h-[1.4vh] bg-orange "></td>
+                                        <td class="relative rounded-[4px] w-[1.4vh] h-[1.4vh] bg-orange group">
+                                            <span class="absolute left-5 top-0 opacity-0 group-hover:opacity-100 transition duration-300 bg-gray-700 text-white text-xs p-1 rounded z-50">
+                                                {{$jourdelanneesemaine[$i][$j]->translatedFormat('j M')}}
+                                            </span>
+                                        </td>
                                     @else
-                                        <td class="rounded-[4px] w-[1.4vh] h-[1.4vh] bg-gris-clair"></td>
+                                        <td class="rounded-[4px] w-[1.4vh] h-[1.4vh] bg-gris-clair">
+
+                                        </td>
+
                                     @endif
 
                                 @endif
@@ -64,10 +71,15 @@
         </div>
         <div
             class="col-span-2 row-span-1 bg-blanc text-black rounded-[1.8vw] grid p-[1vh] pl-[2vh] text-xl font-medium">
+            @if($nextsceance == null)
+                <p class="text-3xl font-normal flex text-center">Vous n'avez pas de scéance planifié </p>
+            @else
             <p class="text-4xl ">
             <div class="text-orange text-6xl font-normal"> {{ __('dashboard.sceance') }} {{$nextsceance->name}}</div>
             {{ __('dashboard.prochaine') }}
+            @endif
         </div>
+
         <div class="col-span-2 row-span-2 bg-blanc text-black rounded-[1.8vw] flex flex-col p-5 text-xl font-medium">
             @if(count($favori) === 0)
                 <p class="text-3xl font-normal flex text-center">Vous n'avez pas de scéance en favori </p>
@@ -85,10 +97,12 @@
         </div>
         <div
             class="col-span-2 row-span-2 bg-blanc text-black rounded-[1.8vw] p-5 text-xl font-medium relative">
+            <!--
             <div class="flex absolute right-5">
-                <button onclick="func5graph()" class="bg-blanc p-2 rounded-[1.8vw] border border_black text-base font-light">5 dernières</button>
-                <button onclick="func10graph()" class="bg-blanc p-2 rounded-[1.8vw] border border_black text-base font-light">10 dernières</button>
+                <button onclick="functop3_5()" class="bg-blanc p-2 rounded-[1.8vw] border border_black text-base font-light">5 dernières</button>
+                <button onclick="functop3_10()" class="bg-blanc p-2 rounded-[1.8vw] border border_black text-base font-light">10 dernières</button>
             </div>
+            -->
             <p>@if($top3 === false)
                 <p class="text-3xl font-normal flex text-center">Vous n'avez pas encore fait assez de scéance, il faut
                     s'entrainer 😉</p>
@@ -127,6 +141,9 @@
                 <button onclick="func10graph()" class="bg-blanc p-2 rounded-[1.8vw] border border_black text-base font-light">10 dernières</button>
             </div>
             </div>
+            @if($nextsceance == null)
+                <p class="text-3xl font-normal flex text-center">Vous n'avez pas de scéance planifié </p>
+            @else
             @if($graphique == false)
                 <p class="text-3xl font-normal flex text-center">Vous n'avez pas encore fait assez de scéance, il faut
                     s'entrainer 😉</p>
@@ -134,13 +151,13 @@
                 <div class="w-full h-[75%]  flex items-center justify-center pt-20 ">
                     <canvas id="graph" class="w-full h-full"></canvas>
                 </div>
-                <p class="font-bold text-2xl p-[1vh] pl-10 pt-5">Historique des scéance {{$nextsceance->name}}</p>
+                <p class="font-bold text-2xl p-[1vh] pl-10 pt-5">Historique des scéance {{$nextsceance->name }}</p>
 
             @endif
 
 
             <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+            @endif
 
 
             </div>
@@ -148,6 +165,10 @@
             class="col-span-2 row-span-2 bg-blanc text-black rounded-[1.8vw] flex items-center justify-center p-5 text-xl font-medium">
             <p class="text-5xl font-normal p-[2vh]">{{$randomphrase}}</div>
     </div>
+    <div class="dark:text-black fixed bottom-15 right-15 bg-orange text-5xl font-bold text-blanc flex items-center justify-center rounded-[1vw] h-[4vw] w-[4vw] ">
+            +
+    </div>
+
     <script>
         const ctx = document.getElementById('graph');
 
@@ -160,10 +181,9 @@
 
 
         function showgraph(){
-            if (datavar.length == 5) {
-                datalabel = ["scéance 1", "scéance 2", "scéance 3", "scéance 4", "scéance 5"]
-            } else {
-                datalabel = ["scéance 1", "scéance 2", "scéance 3", "scéance 4", "scéance 5", "scéance 6", "scéance 7", "scéance 8", "scéance 9", "scéance 10",]
+            datalabel = []
+            for(let i = 0; i < datavar.length; i++){
+                datalabel.push(i + 1);
             }
 
 
@@ -212,7 +232,7 @@
                     "Content-Type": "application/x-www-form-urlencoded",
                     "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content
                 },
-                body: new URLSearchParams({ iduser: {{$user->id}}, limite: 5, idworkout: {{$nextsceance->id}}
+                body: new URLSearchParams({ iduser: {{$user->id}}, limite: 5, idworkout: {{$nextsceance->id ?? 0}}
                 }),
             })
 
@@ -228,8 +248,10 @@
                     datavar = data;
                     if (graphobj !== null) {
                         graphobj.destroy();
+                        showgraph()
                     }
-                    showgraph()
+
+
                 })
                 .catch(error => {
                     console.error("Erreur fetch :", error);
@@ -244,7 +266,7 @@
                     "Content-Type": "application/x-www-form-urlencoded",
                     "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content
                 },
-                body: new URLSearchParams({ iduser: {{$user->id}}, limite: 10, idworkout: {{$nextsceance->id}}
+                body: new URLSearchParams({ iduser: {{$user->id}}, limite: 10, idworkout: {{$nextsceance->id ?? 0}}
                 }),
             })
 
@@ -260,8 +282,9 @@
                     datavar = data;
                     if (graphobj !== null) {
                         graphobj.destroy();
+                        showgraph()
                     }
-                    showgraph()
+
                 })
                 .catch(error => {
                     console.error("Erreur fetch :", error);

@@ -37,9 +37,10 @@ class FunctionControllerjson extends Controller
                 ->pluck('id')
                 ->first();
 
-            if ($sceancedebut == null){
+            if (!$sceancedebut) {
                 return false;
             }
+
 
             $sceancefin = workout_session::where('workout_id', $sceance)
                 ->where('isfinished', true)
@@ -92,6 +93,10 @@ class FunctionControllerjson extends Controller
             ->orderBy('dateofworkout', 'desc')
             ->limit($limite)
             ->pluck('id');
+
+        if (!$sceanceIds) {
+            return false;
+        }
 
 
 
