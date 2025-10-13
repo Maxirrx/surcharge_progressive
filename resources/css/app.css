@@ -11,12 +11,12 @@
     --font-weight-extrablack: 1000;
 
 }
+
+
 @theme dark{
     --color-black: #EEEEEE;
     --color-blanc: #191919;
     --color-gris-clair: #2A2A2A;
     --color-gris-fond: #3A3A3A;
 }
-
-
 

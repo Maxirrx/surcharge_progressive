@@ -81,7 +81,9 @@
                 <tr class="border-b">
                     <th class="p-4 text-left">Nom de la séance</th>
                     <th class="p-4 text-left">Nombre d'exercices</th>
-                    <th><input type="submit" value="Créer un nouvelle séance" class="dark:text-black text-blanc p-2 text-base rounded-[0.5vw] bg-vert"></th>
+                    <th><a href="{{ route('seance.create') }}" class="dark:text-black text-blanc p-2 text-base rounded-[0.5vw] bg-vert">
+                            Créer une nouvelle séance
+                        </a></th>
                 </tr>
                 @for($i = 0; $i < 6 ; $i++)
                     @if(isset($tableauworkout[$i]))
@@ -89,10 +91,16 @@
                         <td class="border-b p-4 font-bold text-2xl">{{$tableauworkout[$i]["name"]}}</td>
                         <td class="border-b p-4">{{$tableauworkout[$i]["nb"]}}</td>
                         <td class="border-b p-4">
-                            <input type="submit" value="Modifier" class="dark:text-black text-blanc p-3 rounded-[0.5vw] bg-bleu">
+                            <a href="{{ route('seance.edit', ['seance' => $tableauworkout[$i]['id']]) }}"
+                               class="dark:text-black text-blanc p-2 rounded-[0.5vw] bg-bleu">
+                                Modifier
+                            </a>
                         </td>
                         <td class="border-b p-4">
-                            <input type="submit" value="Lancer" class="dark:text-black text-blanc p-3 rounded-[0.5vw] bg-orange">
+                            <a href=""
+                               class="dark:text-black text-blanc p-2 rounded-[0.5vw] bg-orange">
+                                Lancer
+                            </a>
                         </td>
                     </tr>
                     @endif
@@ -103,7 +111,9 @@
             <table class="w-full border-collapse">
                 <tr class="border-b">
                     <th class="p-4 text-left">Nom de l'exercice</th>
-                    <th><input type="submit" value="Créer un nouvel exercice" class="dark:text-black text-blanc p-2 text-base rounded-[0.5vw] bg-vert"></th>
+                    <th><a href="{{ route('exercice.create') }}" class="dark:text-black text-blanc p-2 text-base rounded-[0.5vw] bg-vert">
+                            Créer un nouvel exercice
+                        </a></th>
 
                 </tr>
                 @for($i = 0; $i < 8 ; $i++)
@@ -111,7 +121,10 @@
                     <tr>
                         <td class="border-b p-3 font-bold text-xl">{{$tableauexercice[$i]->name}}</td>
                         <td class="border-b p-3">
-                            <input type="submit" value="Modifier" class="dark:text-black text-blanc p-2 rounded-[0.5vw] bg-bleu">
+                            <a href="{{ route('exercice.edit', ['exercice' => $tableauexercice[$i]->id]) }}"
+                               class="dark:text-black text-blanc p-2 rounded-[0.5vw] bg-bleu">
+                                Modifier
+                            </a>
                         </td>
                     </tr>
                     @endif

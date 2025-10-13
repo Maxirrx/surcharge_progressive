@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ControllerForm;
+use App\Repositories\ExerciceRepositorie;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControllerMenu;
 use App\Http\Controllers\Connexion;
@@ -13,9 +14,7 @@ use App\Http\Controllers\ControllerParametre;
 use \App\Http\Controllers\FunctionControllerjson;
 
 
-Route::get('/', function () {
-    return view('connexion');
-})->name('login');
+Route::get('/', function () {return view('connexion');})->name('login');
 
 Route::post('/verif', [Connexion::class, 'connexion']);
 
@@ -32,7 +31,17 @@ Route::middleware(['auth'])->group(function () {
 
     Route::prefix('exercice')->group(function () {
         Route::get('/create', [ControllerForm::class, 'create_exercice'])->name('exercice.create');
-        Route::get('/edit', [ControllerForm::class, 'edit_exercice'])->name('exercice.edit');
+        Route::get('/edit/{exercice}', [ControllerForm::class, 'edit_exercice'])->name('exercice.edit');
+        Route::post('/store', [ExerciceRepositorie::class, 'store'])->name('exercice.store');
+        Route::put('/update/{id}', [ExerciceRepositorie::class, 'update'])->name('exercice.update');
+
+    });
+
+    Route::prefix('seance')->group(function () {
+        Route::get('/create', [ControllerForm::class, 'create_seance'])->name('seance.create');
+        Route::get('/edit/{seance}', [ControllerForm::class, 'edit_seance'])->name('seance.edit');
+        Route::post('/store', [ExerciceRepositorie::class, 'store'])->name('seance.store');
+        Route::put('/update/{id}', [ExerciceRepositorie::class, 'update'])->name('seance.update');
 
     });
 

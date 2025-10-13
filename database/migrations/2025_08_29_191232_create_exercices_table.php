@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('muscle_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->boolean('public')->default(false);
+            $table->timestamps();
         });
     }
 
