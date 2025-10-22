@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Connexion</title>
 </head>
-<body>
+<body class="bg-gris-clair">
+<div class="bg-blanc ">
 <form method="POST" action="/verif">
     @csrf
     <input type="text" placeholder="Nom d'utilisateur" name="login" required>
@@ -15,6 +16,7 @@
         <p style="color:red;">{{ session('error') }}</p>
     @endif
 </form>
+</div>
 </body>
 </html>
 

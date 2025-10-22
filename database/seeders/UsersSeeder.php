@@ -16,18 +16,11 @@ class UsersSeeder extends Seeder
     {
         DB::table('users')->insert([
             'login' => 'Maxirrx',
+            'email' => 'max2005.roux@gmail.com',
             'password' => Hash::make('23032005'),
             'age' => 20,
             'weight' => 78,
             'height' => 180,
-            'gender' => true,
-        ]);
-        DB::table('users')->insert([
-            'login' => 'Jules',
-            'password' => Hash::make('azer'),
-            'age' => 23,
-            'weight' => 108.2,
-            'height' => 192,
             'gender' => true,
         ]);
     }

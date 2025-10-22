@@ -48,3 +48,4 @@ Route::middleware(['auth'])->group(function () {
     Route::post("/top3", [FunctionControllerjson::class, 'top3json']);
     Route::post("/graphique", [FunctionControllerjson::class, 'graphiquejson']);
 });
+
