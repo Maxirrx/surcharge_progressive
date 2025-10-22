@@ -73,7 +73,9 @@ class FunctionControllerjson extends Controller
                 $evolution[$nomexo] = round($pourcentage, 2);
             }
         }
-            return($evolution);
+        $sorted = collect($evolution)->sortDesc();
+        $troisPremiers = collect($sorted)->take(3);
+            return($troisPremiers);
     }
 
 

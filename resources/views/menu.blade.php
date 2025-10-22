@@ -50,7 +50,7 @@
 
                                     @if($totalsceancedelannee->contains($jourdelanneesemaine[$i][$j]->format("Y-m-d")))
                                         <td class="relative rounded-[4px] w-[1.4vh] h-[1.4vh] bg-orange group">
-                                            <span class="absolute left-5 top-0 opacity-0 group-hover:opacity-100 transition duration-300 bg-gray-700 text-white text-xs p-1 rounded z-50">
+                                            <span class="absolute left-0 top-0 opacity-0 group-hover:opacity-100 transition duration-300 bg-gray-700 text-white text-xs p-1 rounded z-50">
                                                 {{$jourdelanneesemaine[$i][$j]->translatedFormat('j M')}}
                                             </span>
                                         </td>
@@ -103,22 +103,25 @@
                 <button onclick="functop3_10()" class="bg-blanc p-2 rounded-[1.8vw] border border_black text-base font-light">10 dernières</button>
             </div>
             -->
-            <p>@if($top3 === false)
+
+            <p>@if(count($top3) < 3)
                 <p class="text-3xl font-normal flex text-center">Vous n'avez pas encore fait assez de scéance, il faut
                     s'entrainer 😉</p>
             @else
 
+
                 <div class="grid grid-cols-1 gap-[2vh] pt-15 ">
 
                     @foreach($top3 as $key=>$top)
-                        <div class="flex justify-between"><p class="text-xl text-orange">{{$key}} :</p> <p class="text-3xl text-bleu">+ {{$top}}%</p>  </div>
+                        <div class="flex justify-between"><p class="text-xl text-orange">{{$key}} :</p> <p class="text-3xl text-bleu">+ {{$top}}%</p>
+                        </div>
                     @endforeach</div>
                 <p class="font-bold text-2xl p-[1vh] absolute bottom-5">Top 3 des exercices avec les plus gros gains</p>
             @endif</div>
         <div
             class="col-span-2 row-span-1 bg-blanc text-black rounded-[1.8vw] grid p-[1vh] pl-[2vh] text-xl font-medium">
             <p class="text-4xl">
-            <div class="text-bleu text-6xl font-normal"> {{ $totalpoids }} Kg</div>
+            <div class="text-bleu text-6xl font-normal"> {{ $totalpoids ? number_format($totalpoids, thousands_separator: ' ') : '0' }} Kg</div>
             {{ __('dashboard.total') }}
         </div>
         <div

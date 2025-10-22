@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('performance', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('workout_id')->constrained('workout_session');
+            $table->foreignId('workout_id')->nullable()->constrained('workout_session');
             $table->foreignId('exercices_id')->constrained('exercices');
             $table->integer('numero_series');
             $table->double('poids');

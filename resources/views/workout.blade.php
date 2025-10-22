@@ -72,7 +72,7 @@
         </div>
         <div class="col-span-2 row-span-1 bg-blanc text-black rounded-[1.8vw] grid p-[1vh] pl-[2vh] text-xl font-medium">
             planifié une séance
-            <input type="submit" value="Planifier" class="dark:text-black text-blanc p-3 rounded-[1.8vw] bg-orange">
+            <input type="submit" value="Planifier" class="dark:text-black text-blanc p-3 rounded-[1.1vw] bg-orange">
 
         </div>
 
